@@ -64,21 +64,25 @@ const App = () => {
   if (error) return <div>Something went WRONG!!!</div>
   return (
     <Wrapper>
+     
       <Drawer anchor= 'right' open ={cartOpen} onClose={()=> setCartOpen(false)}>
         <Cart cartItems={cartItems} addToCart={handleAddToCart} removeFromCart={handleRemoveFromCart}/>
       </Drawer>
+      
       <StyledButton onClick={()=> setCartOpen(true) }>
         <Badge badgeContent = {getTotalItems(cartItems)} color='error'>
           <AddShoppingCartIcon></AddShoppingCartIcon>
         </Badge>
       </StyledButton>
-      <Grid container spacing={3}>
+     
+      <Grid container spacing={4}>
         {data?.map((item : CartItemType) =>(
           <Grid item key={item.id} xs ={12} sm={4}>
             <Item item={item} handleAddToCart={handleAddToCart}></Item>
           </Grid>
           ))}
       </Grid>
+
     </Wrapper>
   )
         }
